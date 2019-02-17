@@ -1,0 +1,98 @@
+﻿@model LoanApplication.Models.LoanApplicationViewModel
+
+@{
+    ViewData["Title"] = "Låneansökan";
+}
+
+<header class="text-center">
+    <picture>
+        <img srcset="~/images/stage_indicator2_400.jpg 400w" class="step-image" />
+    </picture>
+</header>
+
+<h3 class="text-center">
+    Låneansökan
+</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="LoanApplication">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>
+                            <label asp-for="MaritalStatus" class="control-label"></label>*
+                        </strong>
+                        <select asp-for="MaritalStatus" asp-items="Model.MaritalStatuses" class="form-control"></select>
+                        @if (Model.MaritalStatusValidationMsg.Length > 0)
+                        {
+                            <img class="exlamation-img" src="~/images/Exclamation.jpg" />
+                        }
+                        <label class="control-label text-danger">@Html.DisplayFor(model => model.MaritalStatusValidationMsg)</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>
+                            <label asp-for="Occupation" class="control-label"></label>*
+                        </strong>
+
+                        <select asp-for="Occupation" asp-items="Model.Occupations" class="form-control"></select>
+
+                        @if (Model.OccupationValidationMsg.Length > 0)
+                        {
+                            <img class="exlamation-img" src="~/images/Exclamation.jpg" />
+                        }
+                        <label class="control-label text-danger">@Html.DisplayFor(model => model.OccupationValidationMsg)</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>
+                            <label asp-for="YearOfBirth" class="control-label"></label>*
+                        </strong>
+                        <input asp-for="YearOfBirthString" placeholder="YYYY" class="form-control" />
+                        @if (Model.YearOfBirthValidationMsg.Length > 0)
+                        {
+                            <img class="exlamation-img" src="~/images/Exclamation.jpg" />
+                        }
+                        <label class="control-label text-danger">@Html.DisplayFor(model => model.YearOfBirthValidationMsg)</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" value="@Html.DisplayFor(a => a.FirstName)" name="@Html.DisplayNameFor(a => a.FirstName)" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.LastName)" name="@Html.DisplayNameFor(a => a.LastName)" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.Email)" name="@Html.DisplayNameFor(a => a.Email)" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.PhoneNumber)" name="@Html.DisplayNameFor(a => a.PhoneNumber)" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.YearOfBirth)" name="@Html.DisplayNameFor(a => a.YearOfBirth)" />
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        <input name="btnPrevious" type="submit" value="Föregående" class="btn float-left" />
+                        <input name="btnNext" type="submit" value="Nästa" class="btn btn-danger float-right" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

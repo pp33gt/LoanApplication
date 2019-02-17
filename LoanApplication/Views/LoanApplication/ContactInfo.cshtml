@@ -1,0 +1,105 @@
+﻿@model LoanApplication.Models.ContactInfoViewModel
+
+@{
+    ViewData["Title"] = "Låneansökan";
+}
+
+<header class="text-center ">
+    <picture>
+        <img srcset="~/images/stage_indicator1_400.jpg 400w" class="step-image" />
+    </picture>
+</header>
+
+<h3 class="text-center">
+    Kontaktuppgifter
+</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="ContactInfo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="FirstName" class="control-label"></label>*
+                            </strong>
+                        </div>
+                        <div>
+                            <strong>
+                                <input asp-for="FirstName" placeholder="Ditt förnamn" class="form-control" />
+                            </strong>
+                            @*<img class="exlamation-img" src="~/images/Exclamation.jpg" />*@
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="LastName" class="control-label"></label>*
+                            </strong>
+                        </div>
+                        <div>
+                            <input asp-for="LastName" placeholder="Ditt efternamn" class="form-control" />
+                            @*<img class="exlamation-img" src="~/images/Exclamation.jpg" />*@
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="Email" class="control-label"></label>*
+                            </strong>
+                        </div>
+                        <div>
+                            <input type="email" asp-for="Email" placeholder="Din e-post" class="form-control" />
+                            @*<img class="exlamation-img" src="~/images/Exclamation.jpg" />*@
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="PhoneNumber" class="control-label"></label>
+                            </strong>
+                        </div>
+                        <div>
+                            <input type="tel" asp-for="PhoneNumber" placeholder="Ditt telefonnummer" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="hidden" value="@Html.DisplayFor(a => a.MaritalStatus)" name="@Html.DisplayNameFor(a => a.MaritalStatus)" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.Occupation)" name="@Html.DisplayNameFor(a => a.Occupation)" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.YearOfBirth)" name="@Html.DisplayNameFor(a => a.YearOfBirth)" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input name="btnNext" type="submit" value="Nästa" class="btn btn-danger float-right" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

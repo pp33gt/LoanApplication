@@ -1,0 +1,141 @@
+﻿@model LoanApplication.Models.SummaryViewModel
+
+@{
+    ViewData["Title"] = "Låneansökan";
+}
+
+<header class="text-center">
+    <picture>
+        <img srcset="~/images/stage_indicator3_400.jpg 400w"  class="step-image" />
+    </picture>
+</header>
+
+<h3 class="text-center">
+    Summering
+</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Summary">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="FirstName" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.FirstName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="LastName" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.LastName)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="Email" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.Email)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="PhoneNumber" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="MaritalStatus" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.MaritalStatusDisplayName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="Occupation" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.OccupationDisplayName)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <strong>
+                                <label asp-for="YearOfBirth" class="control-label summary-label"></label>
+                            </strong>
+                        </div>
+                        <div class="summary-text">
+                            @Html.DisplayFor(model => model.YearOfBirth)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="hidden" value="@Html.DisplayFor(a => a.FirstName)" name="firstName" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.LastName)" name="lastName" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.Email)" name="email" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.PhoneNumber)" name="phoneNumber" />
+
+                <input type="hidden" value="@Html.DisplayFor(a => a.MaritalStatus)" name="maritalStatus" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.Occupation)" name="occupation" />
+                <input type="hidden" value="@Html.DisplayFor(a => a.YearOfBirth)" name="yearOfBirth" />
+
+            </div>
+
+            <div class="form-group">
+                <input name="btnPrevious" type="submit" value="Föregående" class="btn float-left" />
+                <input name="btnSend" type="submit" value="Skicka" class="btn btn-danger float-right" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
