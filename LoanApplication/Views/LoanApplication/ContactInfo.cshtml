@@ -4,11 +4,32 @@
     ViewData["Title"] = "Låneansökan";
 }
 
-<header class="text-center ">
+<header class="text-center">
     <picture>
         <img srcset="~/images/stage_indicator1_400.jpg 400w" class="step-image" />
     </picture>
 </header>
+
+<div class="text-center">
+    <div class="stage-group" style="position: relative;">
+        <hr class="stage-hr" style="position: absolute;" />
+        <div class="stage-current float-left">
+            <p>
+                1
+            </p>
+        </div>
+        <div class="stage-not-current" >
+            <p>
+                2
+            </p>
+        </div>
+        <div class="stage-not-current float-right" >
+            <p>
+                3
+            </p>
+        </div>
+    </div>
+</div>
 
 <h3 class="text-center">
     Kontaktuppgifter
@@ -31,8 +52,11 @@
                             <strong>
                                 <input asp-for="FirstName" placeholder="Ditt förnamn" class="form-control" />
                             </strong>
-                            @*<img class="exlamation-img" src="~/images/Exclamation.jpg" />*@
-                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                            
+                            <div class="exclamation-target">
+                                <div class="exclamation-character"></div>
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,8 +69,11 @@
                         </div>
                         <div>
                             <input asp-for="LastName" placeholder="Ditt efternamn" class="form-control" />
-                            @*<img class="exlamation-img" src="~/images/Exclamation.jpg" />*@
-                            <span asp-validation-for="LastName" class="text-danger"></span>
+
+                            <div class="exclamation-target">
+                                <div class="exclamation-character"></div>
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,8 +88,11 @@
                         </div>
                         <div>
                             <input type="email" asp-for="Email" placeholder="Din e-post" class="form-control" />
-                            @*<img class="exlamation-img" src="~/images/Exclamation.jpg" />*@
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            
+                            <div class="exclamation-target">
+                                <div class="exclamation-character"></div>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +106,7 @@
                         <div>
                             <input type="tel" asp-for="PhoneNumber" placeholder="Ditt telefonnummer" class="form-control" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,11 +125,17 @@
                     </div>
                 </div>
             </div>
-
         </form>
     </div>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            //alert("Test");
+            //$("<img class='exlamation-img' src='/images/Exclamation.jpg' />").insertBefore(".text-danger ");
+        });
+    </script>
 }

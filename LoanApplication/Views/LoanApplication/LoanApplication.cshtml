@@ -10,6 +10,28 @@
     </picture>
 </header>
 
+<div class="text-center">
+    <div class="stage-group">
+        <hr class="stage-hr" />
+        <div class="stage-not-current float-left">
+            <p>
+                1
+            </p>
+        </div>
+        <div class="stage-current">
+            <p>
+                2
+            </p>
+        </div>
+        <div class="stage-not-current float-right">
+            <p>
+                3
+            </p>
+        </div>
+    </div>
+</div>
+
+
 <h3 class="text-center">
     Låneansökan
 </h3>
@@ -18,7 +40,6 @@
     <div class="col-md-12">
         <form asp-action="LoanApplication">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -73,9 +94,10 @@
             <div class="form-group">
                 <input type="hidden" value="@Html.DisplayFor(a => a.FirstName)" name="@Html.DisplayNameFor(a => a.FirstName)" />
                 <input type="hidden" value="@Html.DisplayFor(a => a.LastName)" name="@Html.DisplayNameFor(a => a.LastName)" />
-                <input type="hidden" value="@Html.DisplayFor(a => a.Email)" name="@Html.DisplayNameFor(a => a.Email)" />
+                @*<input type="hidden" value="@Html.DisplayFor(a => a.Email)" name="@Html.DisplayNameFor(a => a.Email)" />*@
                 <input type="hidden" value="@Html.DisplayFor(a => a.PhoneNumber)" name="@Html.DisplayNameFor(a => a.PhoneNumber)" />
                 <input type="hidden" value="@Html.DisplayFor(a => a.YearOfBirth)" name="@Html.DisplayNameFor(a => a.YearOfBirth)" />
+                @Html.TextBoxFor(model => model.Email, new { @type = "hidden" })
             </div>
 
 

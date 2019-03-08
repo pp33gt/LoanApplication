@@ -15,8 +15,11 @@ namespace LoanApplication.Models
         [Required]
         public string LastName { get; set; }
 
+
+        //[RegularExpression(@"^[a-z,0-9]+.[a-z,0-9]+@[a-z,0-9]+.[a-z]{2}$")]
+        //[EmailAddress] //(ErrorMessage = "Invalid Email Address")
         [Required]
-        [RegularExpression(@"^[a-z,0-9]+@[a-z,0-9]+.[a-z]{2}$")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [RegularExpression(@"^[0-9]{2,3}-[0-9]+$", ErrorMessage = "Felaktigt telefonnummer")]

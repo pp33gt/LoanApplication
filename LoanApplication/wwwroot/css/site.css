@@ -84,3 +84,101 @@ h3 {
     height:20px;
     width:20px;
 }
+
+/*#LastName-error::before {    //FUNGERAR men bilden blir för stor, width och height biter inte.
+    content: url('/images/Exclamation.jpg');
+    height: 20px;
+    width: 20px;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+.stage-group {
+    min-width: 400px;
+    max-width: 400px;
+    /*border: 1px solid black;*/
+    display: inline-block;
+    position: relative;
+}
+
+.stage-hr {
+    z-index: -1;
+    position: absolute;
+    color: gray;
+    top: 0px;
+    width: 100%;
+}
+
+.stage-current {
+    border: 2px solid red;
+    background-color: red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.stage-current > p {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+}
+
+.stage-not-current {
+    border: 2px solid gray;
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.stage-not-current > p {
+    color: gray;
+    font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+}
+.exclamation-target
+{
+}
+
+    .exclamation-target > span > span::before {
+        border: 2px solid red;
+        background-color: red;
+        border-radius: 50%;
+        width: 23px;
+        height: 23px;
+        display: inline-block;
+        content: " ";
+        z-index: 50;
+    }
+
+.exclamation-character {
+}
+
+    .exclamation-character::after {
+        display: inline;
+        content: "!";
+        color: white;
+        font-weight: bold;
+        z-index: 100;
+        position: absolute;
+        left: 23px;
+    }
+

@@ -16,10 +16,15 @@ namespace LoanApplication.Models
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
+
+        //[RegularExpression(@"^[a-z,0-9]+.[a-z,0-9]+@[a-z,0-9]+.[a-z]{2}$")]
         [Required]
-        [RegularExpression(@"^[a-z,0-9]+@[a-z,0-9]+.[a-z]{2}$")]
+        [EmailAddress]
         [Display(Name = "E-Post")]
         public string Email { get; set; }
+
+        public string EmailWithoutFormatting { get { return Email; } }
+
 
         [Display(Name = "Telefonnummer")]
         [RegularExpression(@"^[0-9]{2,3}-[0-9]+$")]
